@@ -2,7 +2,7 @@ import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import SideNav from "./SideNav/sideNav";
 const Header = props => {
   const navBars = () => {
@@ -10,7 +10,7 @@ const Header = props => {
       <div className="bars-font">
         <FontAwesomeIcon
           onClick={props.onOpenNav}
-          icon={faHome}
+          icon={faAlignJustify}
           name="bars"
           style={{
             color: "#dfdfdf",

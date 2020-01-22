@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./layout.css";
 import Header from "../../Header/header";
+import Footer from "../../Footer/footer";
 
 export default class Layout extends Component {
   state = {
@@ -22,7 +23,7 @@ export default class Layout extends Component {
           onOpenNav={() => this.toggleSidenav(true)}
         />
         {this.props.children}
-        footer
+        <Footer />
       </div>
     );
   }
