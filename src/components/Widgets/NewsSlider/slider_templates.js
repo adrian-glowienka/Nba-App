@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Slick from "react-slick";
-import styles from "./slider.css";
+import styles from "./slider.module.css";
 
 const SliderTemplates = props => {
   let template = null;
