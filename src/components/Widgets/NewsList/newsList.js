@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { URL } from "../../../config";
 import styles from "./newsList.module.css";
+import Button from "../Buttons/buttons";
+import CardInfo from "../CardInfo/cardInfo";
 
 export default class NewsList extends Component {
   state = {
+    temas: [],
     items: [],
     start: this.props.start,
     end: this.props.start + this.props.amount,
@@ -18,9 +21,17 @@ export default class NewsList extends Component {
   }
 
   request = (start, end) => {
+    axios.get(`${URL}/teams`).then(response => {
+      this.setState({
+        teams: response.data
+      });
+    });
+
     axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then(response => {
       this.setState({
-        items: [...this.state.items, ...response.data]
+        items: [...this.state.items, ...response.data],
+        start,
+        end
       });
     });
   };
@@ -46,6 +57,7 @@ export default class NewsList extends Component {
             <div>
               <div className={styles.newslist_item}>
                 <Link to={`/articles/${item.id}`}>
+                  <CardInfo />
                   <h2> {item.title} </h2>
                 </Link>
               </div>
@@ -65,7 +77,11 @@ export default class NewsList extends Component {
         <TransitionGroup component="div" className="list">
           {this.renderNews(this.props.type)}
         </TransitionGroup>
-        <div onClick={() => this.loadMore()}>Load More</div>
+        <Button
+          type="loadmore"
+          loadMore={() => this.loadMore()}
+          cta="Load More News"
+        />
       </div>
     );
   }
