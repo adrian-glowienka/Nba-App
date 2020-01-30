@@ -57,7 +57,11 @@ export default class NewsList extends Component {
             <div>
               <div className={styles.newslist_item}>
                 <Link to={`/articles/${item.id}`}>
-                  <CardInfo />
+                  <CardInfo
+                    teams={this.state.teams}
+                    team={item.team}
+                    date={item.date}
+                  />
                   <h2> {item.title} </h2>
                 </Link>
               </div>
