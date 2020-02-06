@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { URL } from "../../../../config";
-import styles from "../../articles.css";
+import styles from "../../articles.module.css";
 import Header from "./header";
 import Body from "./body";
 
@@ -27,7 +27,6 @@ class NewsArticles extends Component {
   }
 
   render() {
-    console.log(this.state);
     const article = this.state.article;
     const team = this.state.team;
     return (
