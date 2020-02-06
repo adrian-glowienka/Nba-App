@@ -18,20 +18,25 @@ class NewsArticles extends Component {
         let article = response.data[0];
 
         axios.get(`${URL}/teams?id=${article.team}`).then(response => {
-          this.setState = {
+          this.setState({
             article,
             team: response.data
-          };
+          });
         });
       });
   }
 
   render() {
+    console.log(this.state);
     const article = this.state.article;
     const team = this.state.team;
     return (
       <div className={styles.articleWrapper}>
-        <Header />
+        <Header
+          teamData={team[0]}
+          date={article.date}
+          author={article.author}
+        />
         <Body />
       </div>
     );
